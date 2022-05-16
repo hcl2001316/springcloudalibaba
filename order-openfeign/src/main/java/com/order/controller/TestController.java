@@ -30,7 +30,8 @@ public class TestController {
     @RequestMapping("add2")
     public String add2(){
         String result = sentinelOpen.reduce2();
-        return "你好呀~~"+result;
+        System.out.println("fsdfsdf");
+        return "你好呀~~故意谷歌"+result;
     }
 
     @ResponseBody
