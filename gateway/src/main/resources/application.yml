@@ -1,0 +1,36 @@
+server:
+  port: 8012
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: order-route #这个是路由的唯一标识
+          uri: http://localhost:8011 #需要转发的地址
+          predicates: #断言规则，用于路由规则的匹配
+            - Path=/order-serv/**  #添加这个/order-serv是为了区分，http://localhost:8012/order-serv/order/add会被转发到
+            #http://localhost:8011/order-serv/order/add
+          filters:
+            - StripPrefix=1    #去掉加上的第一层路径order-serv
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+
+    nacos:
+      discovery:
+        username: nacos
+        password: nacos
+        server-addr: 127.0.0.1:8848
+    #        ephemeral: false
+
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8858
+
+  application:
+    name: gate-way
+
+
+
+

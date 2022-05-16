@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: com.hcl
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.183.128:8872
+        username: nacos
+        password: nacos
+        namespace: public
+        file-extension: yaml
+        group: grophcl
+        shared-configs:
+          - data-id: com.hcl-dev.properties
+            group: grophcl
+            refresh: true
+#        extension-configs:
+#          - data-id: com.hcl-dev.properties
+#              group: grophcl
+#              refresh: true

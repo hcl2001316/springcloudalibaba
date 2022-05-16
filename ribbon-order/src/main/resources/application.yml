@@ -1,0 +1,26 @@
+
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      discovery:
+        namespace: public
+        username: nacos
+        password: nacos
+        server-addr: 127.0.0.1:8848
+#        server-addr: 192.168.183.128:8847
+
+stock-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.ribbon.CustomRule
+
+
+server:
+  port: 8090
+
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: stock-nacos

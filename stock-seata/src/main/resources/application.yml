@@ -1,0 +1,60 @@
+
+
+spring:
+  application:
+    name: stock-seata
+  datasource:
+    username: root
+    password: 123
+    url: jdbc:mysql://localhost:3306/mybatis_test?useUnicode=true&characterEncoding=Utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      #开启 Druid 内置监控页面
+      stat-view-servlet:
+        login-username: hcl
+        login-password: 123
+        url-pattern: /druid/*
+        enabled: true
+
+      #开启 Web-JDBC 关联监控
+      web-stat-filter:
+        enabled: true
+        url-pattern: '/*'
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+      filters: stat    #设置sql监控
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.183.1:8848
+        namespace: public
+        username: nacos
+        password: nacos
+    alibaba:
+      seata:
+        tx-service-group: test
+
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+server:
+  port: 8081
+
+seata:
+  registry:
+    type: nacos #配置seate的配置中心，让client知道怎么去找server
+    nacos:
+      server-addr: 192.168.183.1:8848
+      application: seata-server #server的名称
+      username: nacos
+      password: nacos
+  config:
+    type: nacos
+    nacos:
+      server-addr: 192.168.183.1:8848
+      username: nacos
+      password: nacos
+
+

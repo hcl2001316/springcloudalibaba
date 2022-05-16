@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hcl2.dao.StockDao">
+
+    <resultMap type="com.hcl2.entity.Stock" id="StockMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="stockCount" column="stock_count" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <update id="reduce" parameterType="int">
+        update stock set stock_count=stock_count-1 where id=#{id}
+    </update>
+
+</mapper>
+

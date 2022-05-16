@@ -1,0 +1,6 @@
+server:
+  port: 8841
+
+spring:
+  profiles:
+    active: dev

@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: sentinel
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8858
+      web-context-unify: false #默认的话是收敛的，必须关闭

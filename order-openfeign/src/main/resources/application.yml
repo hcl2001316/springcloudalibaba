@@ -1,0 +1,46 @@
+
+spring:
+  application:
+    name: order-service
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8858
+      datasource:
+        flow-rule:
+          nacos:
+            server-addr: 192.168.183.1:8848
+            username: nacos
+            password: nacos
+            dataId: order-service-flow
+            rule-type: flow
+
+
+    nacos:
+      discovery:
+        namespace: public
+        username: nacos
+        password: nacos
+        server-addr: 192.168.183.1:8848
+
+#        server-addr: 192.168.183.128:8847
+server:
+  port: 8011
+
+
+
+
+logging:
+  level:
+    com.order.feign: debug
+feign:
+  client:
+    config:
+      stock-service:
+        loggerLevel: BASIC
+        connectTimeout: 5000 #连接超时
+        readTimeout: 10000 #请求处理超时
+        requestInterceptors[0]:
+          com.order.interceptor.FeignInterceptor
+  sentinel:
+    enabled: true
