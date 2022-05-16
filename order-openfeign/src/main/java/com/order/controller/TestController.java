@@ -31,7 +31,7 @@ public class TestController {
     public String add2(){
         String result = sentinelOpen.reduce2();
         System.out.println("fsdfsdf");
-        return "你好呀~~故意谷歌"+result;
+        return "你好呀~~故意谷45455656歌6666666666666"+result;
     }
 
     @ResponseBody
